@@ -1,2 +1,2 @@
 # for-LTeam
-LTeam Title Bot
+LTeam Title core.Bot
