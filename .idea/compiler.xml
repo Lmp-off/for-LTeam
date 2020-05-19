@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Pr1" />
         <module name="deskgit" />
+        <module name="Pr1" />
+        <module name="for-LTeam" />
       </profile>
     </annotationProcessing>
   </component>
