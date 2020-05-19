@@ -20,6 +20,7 @@ import settings.CONSTS;
 *
 */
 public class Bot extends ListenerAdapter {
+    private First_Init first_init = new First_Init();
     public static void main(String[] args) throws Exception {
         JDA jda = new JDABuilder(CONSTS.token).addEventListeners(new Bot()).setActivity(Activity.playing("Type &help")).build();
         jda.addEventListener();
@@ -31,7 +32,6 @@ public class Bot extends ListenerAdapter {
         //make if log file is empty (write in docs command &start)
         //&start (set member rule,create new text channel and write this id and write there in file) 1set member rule 2enable mute members(true false) 3how min mute for bad words 3
         //made sure that thi is the current channel else cancel first initialization
-        First_Init first_init = new First_Init();
         event.getGuild().addRoleToMember(event.getMember(), event.getGuild().getRoleById("710993484986974239")).queue();
         if(event.getAuthor().isBot())return;
         if (!first_init.isInitialize()){
