@@ -34,13 +34,15 @@ public class Bot extends ListenerAdapter {
         //made sure that thi is the current channel else cancel first initialization
         event.getGuild().addRoleToMember(event.getMember(), event.getGuild().getRoleById("710993484986974239")).queue();
         if(event.getAuthor().isBot())return;
-        if (!first_init.isInitialize()){
+        if (!first_init.isInitialized()){
             first_init.Initialize(event);
         }
+        else  event.getChannel().sendMessage("My initialization has done by success before if you want to reset it write &stop").queue();
+
         MessageChannel ch=event.getChannel();
         TextChannel tc= event.getTextChannel();
         System.out.println(event.getMember()+"||"+event.getAuthor());
         String message = event.getMessage().getContentRaw().toLowerCase();
-        if (message.equals("&start"));
+       // if (message.equals("&start"));
     }
 }
