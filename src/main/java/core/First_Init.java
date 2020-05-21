@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class First_Init {
+    private boolean eng;
     private User InitUser;
     private boolean isInitialize=false;
     private String memberRoleID;
@@ -35,16 +36,28 @@ public class First_Init {
     }
 
     public void Initialize(MessageReceivedEvent event){
+        if (InitUser==null&&event.getMessage().getContentRaw().equals("&rus")){
+            eng = false;
+            event.getChannel().sendMessage("язык переключён на русский").queue();
+        }
 
-        if (InitUser==null&&event.getMessage().getContentRaw().equals("&start")){//1
+
+        else if (InitUser==null&&event.getMessage().getContentRaw().equals("&start")){//1
             System.out.println(InitUser);
             InitUser=event.getAuthor();
-            event.getChannel().sendMessage("Ok "+InitUser.getName()+" started my initialization,\nnow you need to enter your private text channel ID where you can control me(&f-to show all my functions)").queue();
+            if (eng)
+                event.getChannel().sendMessage("Ok "+InitUser.getName()+" started my initialization,\nnow you need to enter your private text channel ID where you can control me(&f-to show all my functions)").queue();
+            else
+                event.getChannel().sendMessage("ок "+InitUser.getName()+" начал мою настройку,\nсейчас тебе нужно ввести id канала в который будет доступен только тебе(&f покажет полный список команд)").queue();
             return;
         }
+
         if(messageChannelID==null&&InitUser!=null){//2
             if (event.getAuthor()!=InitUser){
-                event.getChannel().sendMessage("Initialization can be continued by "+InitUser.getName()+"\nif you want to cancel initialization tap &stop").queue();
+                if(eng)
+                    event.getChannel().sendMessage("Initialization can be continued by "+InitUser.getName()+"\nif you want to cancel initialization tap &stop").queue();
+                else
+                    event.getChannel().sendMessage("настройка может быть продолжена "+InitUser.getName()+"\nif you want to cancel initialization tap &stop").queue();
                 return;
             }
             else {
