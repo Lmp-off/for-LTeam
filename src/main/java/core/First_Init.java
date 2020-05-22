@@ -6,13 +6,12 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class First_Init {
-    private boolean eng;
-    private User InitUser;
-    private boolean isInitialize=false;
-    private String memberRoleID;
-    private String messageChannelID;
-
-    public First_Init(){ }
+    //vate boolean eng;
+    private static User InitUser;
+    private static boolean isInitialize=false;
+    private static String memberRoleID;
+    private static String messageChannelID;
+    private static LanguagesAdapter languagesAdapter;
 
     public void stopInitialization(MessageReceivedEvent event){
         this.isInitialize=false;
@@ -35,39 +34,34 @@ public class First_Init {
         return isInitialize;
     }
 
-    public void Initialize(MessageReceivedEvent event){
-        if (InitUser==null&&event.getMessage().getContentRaw().equals("&rus")){
-            eng = false;
-            event.getChannel().sendMessage("язык переключён на русский").queue();
-        }
-
-
-        else if (InitUser==null&&event.getMessage().getContentRaw().equals("&start")){//1
+    public static void Initialize(MessageReceivedEvent event){
+        languagesAdapter=new LanguagesAdapter(Bot.languages);
+         if (InitUser==null){//1
             System.out.println(InitUser);
             InitUser=event.getAuthor();
-            if (eng)
-                event.getChannel().sendMessage("Ok "+InitUser.getName()+" started my initialization,\nnow you need to enter your private text channel ID where you can control me(&f-to show all my functions)").queue();
-            else
-                event.getChannel().sendMessage("ок "+InitUser.getName()+" начал мою настройку,\nсейчас тебе нужно ввести id канала в который будет доступен только тебе(&f покажет полный список команд)").queue();
+            //if (eng)
+                event.getChannel().sendMessage("Ok "+InitUser.getName()+languagesAdapter.getFirstInit(0)).queue();
+            //else
+            //    event.getChannel().sendMessage("ок "+InitUser.getName()+" начал мою настройку,\nсейчас тебе нужно ввести id канала в который будет доступен только тебе(&f покажет полный список команд)").queue();
             return;
         }
 
         if(messageChannelID==null&&InitUser!=null){//2
             if (event.getAuthor()!=InitUser){
-                if(eng)
-                    event.getChannel().sendMessage("Initialization can be continued by "+InitUser.getName()+"\nif you want to cancel initialization tap &stop").queue();
-                else
-                    event.getChannel().sendMessage("настройка может быть продолжена "+InitUser.getName()+"\nif you want to cancel initialization tap &stop").queue();
+               // if(eng)
+                    event.getChannel().sendMessage(languagesAdapter.getFirstInit(1)+InitUser.getName()+languagesAdapter.getFirstInit(2)).queue();
+              //  else
+                  //  event.getChannel().sendMessage("настройка может быть продолжена "+InitUser.getName()+"\nif you want to cancel initialization tap &stop").queue();
                 return;
             }
             else {
                 try {
                     event.getGuild().getTextChannelById(event.getMessage().getContentRaw());
                     messageChannelID = event.getMessage().getContentRaw();
-                    event.getChannel().sendMessage("Now the last you need to write member role").queue();
+                    event.getChannel().sendMessage(languagesAdapter.getFirstInit(3)).queue();
                     return;
                 } catch (Exception e) {
-                    event.getChannel().sendMessage("This is not channel ID\n(right click to your private text channel and click to copy chanel ID ").queue();
+                    event.getChannel().sendMessage(languagesAdapter.getFirstInit(4)).queue();
                     return;
                 }
             }
@@ -77,13 +71,13 @@ public class First_Init {
                 event.getGuild().getRoleById(event.getMessage().getContentRaw());
                 memberRoleID = event.getMessage().getContentRaw();
                 isInitialize = true;
-                event.getChannel().sendMessage("init was correct\n••••••••••••••••••\n"
-                        +InitUser.getName()+" - is the main administrator\n"
-                        +event.getGuild().getRoleById(memberRoleID).getName()+" - is the default rule\n"
-                        +event.getGuild().getTextChannelById(messageChannelID).getName()+" - if the root text channel\n").queue();
+                event.getChannel().sendMessage(languagesAdapter.getFirstInit(5)
+                        +InitUser.getName()+languagesAdapter.getFirstInit(6)
+                        +event.getGuild().getRoleById(memberRoleID).getName()+languagesAdapter.getFirstInit(7)
+                        +event.getGuild().getTextChannelById(messageChannelID).getName()+languagesAdapter.getFirstInit(8)).queue();
             }
             catch (Exception ex){
-                event.getChannel().sendMessage("incorrect role id").queue();
+                event.getChannel().sendMessage(languagesAdapter.getFirstInit(9)).queue();
             }
         }
     }
