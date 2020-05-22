@@ -17,8 +17,8 @@ public class First_Init {
         this.memberRoleID=null;
         this.messageChannelID=null;
         if (InitUser!=null)
-            event.getChannel().sendMessage(event.getAuthor().getName()+": is stopped my initialization >:(").queue();
-        else event.getChannel().sendMessage("if u want to stop me first of all u need to start initialization by &start >3");
+            event.getChannel().sendMessage(event.getAuthor().getName()+languagesAdapter.getFirstInit(11)).queue();
+        else event.getChannel().sendMessage(languagesAdapter.getFirstInit(12));
     }
 
     public String getMemberRule() {
@@ -38,19 +38,13 @@ public class First_Init {
          if (InitUser==null){//1
             System.out.println(InitUser);
             InitUser=event.getAuthor();
-            //if (eng)
                 event.getChannel().sendMessage("Ok "+InitUser.getName()+languagesAdapter.getFirstInit(0)).queue();
-            //else
-            //    event.getChannel().sendMessage("ок "+InitUser.getName()+" начал мою настройку,\nсейчас тебе нужно ввести id канала в который будет доступен только тебе(&f покажет полный список команд)").queue();
             return;
         }
 
         if(messageChannelID==null&&InitUser!=null){//2
             if (event.getAuthor()!=InitUser){
-               // if(eng)
                     event.getChannel().sendMessage(languagesAdapter.getFirstInit(1)+InitUser.getName()+languagesAdapter.getFirstInit(2)).queue();
-              //  else
-                  //  event.getChannel().sendMessage("настройка может быть продолжена "+InitUser.getName()+"\nif you want to cancel initialization tap &stop").queue();
                 return;
             }
             else {
