@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class First_Init {
+    //es
     private static User InitUser;
     private static boolean isInitialize=false;
     private static String memberRoleID;
