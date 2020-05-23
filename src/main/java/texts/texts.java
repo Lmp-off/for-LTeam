@@ -17,6 +17,7 @@ public class texts {
             ,"if u want to stop me first of all u need to start initialization by &start >3"
 
     };
+    //TODO:СЛАВА ЗАПОЛНИ МАССИВ(SLAVA MAKE firstInitRus !empty)
     public final String[] firstInitRus={
             ""
             ,""
@@ -27,4 +28,9 @@ public class texts {
             ,""
             ,""
     };
+   public final String[] allCommandsEng={
+            "&rus - switch your language to Russian"
+           ,"&eng - switch your language to English"
+           ,"&start - write this command to initialize Bot"
+   };
 }
