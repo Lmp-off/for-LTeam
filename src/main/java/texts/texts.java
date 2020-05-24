@@ -11,15 +11,15 @@ public class texts {
             ," - is the main administrator\n"
             ," - is the default rule\n"
             ," - if the root text channel\n"
-            ,"incorrect role id"
-            ,"My initialization has done by success before if you want to reset it write &stop"
-            ,": is stopped my initialization >:("
-            ,"if u want to stop me first of all u need to start initialization by &start >3"
+            ,"incorrect role id\n"
+            ,"My initialization has done by success before if you want to reset it write &stop\n"
+            ,": is stopped my initialization >:(\n"
+            ,"if u want to stop me first of all u need to start initialization by &start >3\n"
 
     };
     //TODO:СЛАВА ЗАПОЛНИ МАССИВ(SLAVA MAKE firstInitRus !empty)
     public final String[] firstInitRus={
-            ""
+            "афыаф"
             ,""
             ,""
             ,""
@@ -28,9 +28,7 @@ public class texts {
             ,""
             ,""
     };
-   public final String[] allCommandsEng={
-            "&rus - switch your language to Russian"
-           ,"&eng - switch your language to English"
-           ,"&start - write this command to initialize Bot"
-   };
+   public final String allCommandsEng="&rus - переключает язык на русский\n&eng - switch your language to English\n&start - write this command to initialize Bot\n";
+
+   public final String allCommandsRus="&rus - переключает язык на русский\n&eng - switch your language to English\n&start - эта команда запускает бота\n";
 }

@@ -1,7 +1,5 @@
 package core;
 
-import com.sun.deploy.security.ruleset.Rule;
-import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -34,7 +32,7 @@ public class First_Init {
     }
 
     public static void Initialize(MessageReceivedEvent event){
-        languagesAdapter=new LanguagesAdapter(Bot.languages);
+        languagesAdapter=new LanguagesAdapter();
          if (InitUser==null){//1
             System.out.println(InitUser);
             InitUser=event.getAuthor();

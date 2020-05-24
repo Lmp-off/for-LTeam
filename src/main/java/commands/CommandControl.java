@@ -18,7 +18,7 @@ public class CommandControl {
         if  (message.equals("&start"))  First_Init.Initialize(event);
         if (message.equals("&rus")) Bot.languages=Languages.RUSSIAN;
         if (message.equals("&eng")) Bot.languages=Languages.ENGLISH;
-        if (message.equals("&f"));
+        if (message.equals("&f"))new ShowCommands().Show(event);
 
     }
 }
