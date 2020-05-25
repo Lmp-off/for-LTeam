@@ -1,9 +1,8 @@
 package core;
 
-import com.sun.deploy.security.ruleset.Rule;
-import com.sun.deploy.security.ruleset.RuleAction;
-import com.sun.deploy.security.ruleset.RuleId;
 import commands.CommandControl;
+import mute.MuteMain;
+import mute.MuteThread;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.*;
@@ -37,19 +36,15 @@ public class Bot extends ListenerAdapter {
         //make if log file is empty (write in docs command &start)^^
         //&start (set member rule,create new text channel and write this id and write there in file) 1set member rule 2enable mute members(true false) 3how min mute for bad words 3
         //made sure that thi is the current channel else cancel first initialization
+        MuteMain mn= new MuteMain();
         event.getGuild().addRoleToMember(event.getMember(), event.getGuild().getRoleById("710993484986974239")).queue();
         if(event.getAuthor().isBot())return;
+        mn.Check(event.getMessage().getContentRaw());
         if(event.getMessage().getContentRaw().startsWith(CONSTS.prefix)){
             new CommandControl(event);
         }
-
-        else if (!first_init.isInitialized()){
+        else if (!first_init.isInitialized()&&first_init.isStart()) {
             first_init.Initialize(event);
         }
-        else  event.getChannel().sendMessage("My initialization has done by success before if you want to reset it write &stop").queue();
-
-        MessageChannel ch=event.getChannel();
-        TextChannel tc= event.getTextChannel();
-        System.out.println(event.getMember()+"||"+event.getAuthor());
     }
 }

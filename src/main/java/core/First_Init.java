@@ -9,6 +9,7 @@ public class First_Init {
     private static String memberRoleID;
     private static String messageChannelID;
     private static LanguagesAdapter languagesAdapter;
+    private static boolean start=false;
 
     public void stopInitialization(MessageReceivedEvent event){
         this.isInitialize=false;
@@ -31,7 +32,10 @@ public class First_Init {
         return isInitialize;
     }
 
+    public boolean isStart(){return start;}
+
     public static void Initialize(MessageReceivedEvent event){
+        start=true;
         languagesAdapter=new LanguagesAdapter();
          if (InitUser==null){//1
             System.out.println(InitUser);
