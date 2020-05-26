@@ -1,21 +1,30 @@
 package mute;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MuteThread extends Thread {
     ArrayList<Muted> muteds;
-    public MuteThread(ArrayList<Muted> muteds){
-    this.muteds=muteds;
+    Date currDate;
+    Date date;
+    public MuteThread(ArrayList<Muted> muteds,Date date){
+        this.muteds=muteds;
+        this.date=date;
     }
     @Override
     public void run(){
-        while (true){
-            System.out.println("true");
+        while (!isInterrupted()){
             try {
-                Thread.sleep(1000);
+                sleep(6000);
             } catch (InterruptedException e) {
-                System.out.println("interrupt");
-                return;
+                e.printStackTrace();
+            }
+            currDate=new Date();
+            if(date.before(currDate)){
+                System.out.println(date+"-before-"+currDate);
+            }
+            else{
+                System.out.println("after");
             }
         }
     }

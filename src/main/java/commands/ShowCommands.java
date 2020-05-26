@@ -12,6 +12,7 @@ public class ShowCommands {
         texts = new texts();
     }
     public void Show(MessageReceivedEvent event){
+        System.out.println("1");
             event.getChannel().sendMessage(LA.getCommands()).queue();
     }
 }
