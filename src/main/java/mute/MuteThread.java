@@ -20,8 +20,11 @@ public class MuteThread extends Thread {
                 e.printStackTrace();
             }
             currDate=new Date();
-            if(date.before(currDate)){
-                System.out.println(date+"-before-"+currDate);
+            if(currDate.after(muteds.get(0).getUnMuteDate())){
+                MuteMain mm = new MuteMain();
+                System.out.println("Unmuted "+muteds.get(0).getUser().getName());
+                mm.UnMute(0);
+
             }
             else{
                 System.out.println("after");

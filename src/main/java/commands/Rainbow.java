@@ -13,8 +13,8 @@ public class Rainbow extends Thread{
     }
     @Override
     public void run(){
-        while (true){
-            Role role= event.getGuild().getRoleById("710993484986974239");
+      while (true){
+            Role role= event.getGuild().getRoleById("714931370383900682");
             role.getManager().setColor(getColor()).queue();
             try {
                 Thread.sleep(450);
