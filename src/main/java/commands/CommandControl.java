@@ -20,12 +20,11 @@ public class CommandControl {
     }
     //это мэйн для всех команд. проверять тут
     private void controller(){
-        if  (message.equals("&start"))  First_Init.Initialize(event);
-        if  (message.equals("&rus")) Bot.languages=Languages.RUSSIAN;
-        if  (message.equals("&eng")) Bot.languages=Languages.ENGLISH;
-        if  (message.equals("&f"))new ShowCommands().Show(event);
-        if  (message.equals("&rainbow")) new Rainbow(event).start();
-        if  (message.equals("&test")) mm.Check(event);
+        if  (message.trim().equals("&start"))  First_Init.Initialize(event);
+        if  (message.trim().equals("&rus")) Bot.languages=Languages.RUSSIAN;
+        if  (message.trim().equals("&eng")) Bot.languages=Languages.ENGLISH;
+        if  (message.trim().equals("&f"))new ShowCommands().Show(event);
+        if  (message.trim().equals("&rainbow")) new Rainbow(event).start();
 
     }
 }
