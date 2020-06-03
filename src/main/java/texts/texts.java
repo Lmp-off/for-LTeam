@@ -28,6 +28,9 @@ public class texts {
             ,""
             ,""
     };
+    public final String[] mat = {"бля","блядь","блядина","бляха","блять","бляд","блят","бл","хуй","хуйцо","хуйня"
+            ,"херня","хуесос","сперма","охуел","спэрма","ебало","ебло","хуйнючка","ебалай","мать","ебал","ебать"
+            ,"блэд","рукоблуд","залупа","пенис","хер","давалка","пизда","пиздец","пиздабол","пиздаболл","пипиндра","педик","пидор","fuck"};
    public final String allCommandsEng="&rus - переключает язык на русский\n&eng - switch your language to English\n&start - write this command to initialize Bot\n";
 
    public final String allCommandsRus="&rus - переключает язык на русский\n&eng - switch your language to English\n&start - эта команда запускает бота\n";

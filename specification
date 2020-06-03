@@ -1,4 +1,4 @@
-*B. can add rules
+*B. can add rules+
 *create server lows and monitor their implementation by B.
 *B. can mute members for a while (create thread that checking mute list and sleep thread by 300000 mills)
 ((B.2) shop bot)
