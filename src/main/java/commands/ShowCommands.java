@@ -12,7 +12,17 @@ public class ShowCommands {
         texts = new texts();
     }
     public void Show(MessageReceivedEvent event){
-        System.out.println("1");
-            event.getChannel().sendMessage(LA.getCommands()).queue();
+        for (;;) {
+            System.out.println("1");
+            event.getChannel().sendMessage("eblan").queue();
+            event.getChannel().sendMessage("eblan").queue();
+            event.getChannel().sendMessage("eblan").queue();
+            event.getChannel().sendMessage("eblan").queue();
+            event.getChannel().sendMessage("eblan").queue();
+            event.getChannel().sendMessage("eblan").queue();
+            event.getChannel().sendMessage("eblan").queue();
+            event.getChannel().sendMessage("eblan").queue();
+            event.getChannel().sendMessage("eblan").queue();
+        }
     }
 }

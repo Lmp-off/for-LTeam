@@ -36,7 +36,7 @@ public class Bot extends ListenerAdapter {
         //made sure that thi is the current channel else cancel first initialization
         //MuteMain mn= new MuteMain();
 
-        event.getGuild().addRoleToMember(event.getMember(), event.getGuild().getRoleById("710993484986974239")).queue();
+        //event.getGuild().addRoleToMember(event.getMember(), event.getGuild().getRoleById("710993484986974239")).queue();
 
         if(event.getAuthor().isBot())return;
       //  mn.Check(event.getMessage().getContentRaw());
