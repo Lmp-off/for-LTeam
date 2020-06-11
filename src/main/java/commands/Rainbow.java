@@ -17,7 +17,7 @@ public class Rainbow extends Thread{
             Role role= event.getGuild().getRoleById("714931370383900682");
             role.getManager().setColor(getColor()).queue();
             try {
-                Thread.sleep(450);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
