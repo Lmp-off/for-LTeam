@@ -8,6 +8,7 @@ public class First_Init {
     private static boolean isInitialize=false;
     private static String memberRoleID;
     private static String messageChannelID;
+    private static String banRoleID;
     private static LanguagesAdapter languagesAdapter;
     private static boolean start=false;
 
@@ -19,7 +20,6 @@ public class First_Init {
             event.getChannel().sendMessage(event.getAuthor().getName()+languagesAdapter.getFirstInit(11)).queue();
         else event.getChannel().sendMessage(languagesAdapter.getFirstInit(12));
     }
-
     public String getMemberRule() {
         return memberRoleID;
     }
@@ -37,43 +37,49 @@ public class First_Init {
     public static void Initialize(MessageReceivedEvent event){
         start=true;
         languagesAdapter=new LanguagesAdapter();
-         if (InitUser==null){//1
+        if (InitUser!=null&&event.getAuthor()!=InitUser){
+            return;
+        }
+         if (InitUser==null){
             System.out.println(InitUser);
             InitUser=event.getAuthor();
                 event.getChannel().sendMessage("Ok "+InitUser.getName()+languagesAdapter.getFirstInit(0)).queue();
-            return;
         }
 
-        if(messageChannelID==null&&InitUser!=null){//2
-            if (event.getAuthor()!=InitUser){
-                    event.getChannel().sendMessage(languagesAdapter.getFirstInit(1)+InitUser.getName()+languagesAdapter.getFirstInit(2)).queue();
-                return;
-            }
-            else {
+       else if(messageChannelID==null){
                 try {
-                    event.getGuild().getTextChannelById(event.getMessage().getContentRaw());
+                    System.out.println(event.getGuild().getTextChannelById(event.getMessage().getContentRaw()).getName());
                     messageChannelID = event.getMessage().getContentRaw();
-                    event.getChannel().sendMessage(languagesAdapter.getFirstInit(3)).queue();
-                    return;
+                    event.getChannel().sendMessage(languagesAdapter.getFirstInit(14)).queue();
                 } catch (Exception e) {
                     event.getChannel().sendMessage(languagesAdapter.getFirstInit(4)).queue();
-                    return;
                 }
-            }
         }
-        if (memberRoleID==null&&messageChannelID!=null) { //3
+
+        else if (memberRoleID==null) {
             try {
-                event.getGuild().getRoleById(event.getMessage().getContentRaw());
+                System.out.println(event.getGuild().getRoleById(event.getMessage().getContentRaw()).getName());
                 memberRoleID = event.getMessage().getContentRaw();
-                isInitialize = true;
-                event.getChannel().sendMessage(languagesAdapter.getFirstInit(5)
-                        +InitUser.getName()+languagesAdapter.getFirstInit(6)
-                        +event.getGuild().getRoleById(memberRoleID).getName()+languagesAdapter.getFirstInit(7)
-                        +event.getGuild().getTextChannelById(messageChannelID).getName()+languagesAdapter.getFirstInit(8)).queue();
+                event.getChannel().sendMessage(languagesAdapter.getFirstInit(3)).queue();
             }
             catch (Exception ex){
                 event.getChannel().sendMessage(languagesAdapter.getFirstInit(9)).queue();
             }
         }
+        else if(banRoleID==null){
+            try {
+                System.out.println(event.getGuild().getRoleById(event.getMessage().getContentRaw()).getName());
+                banRoleID = event.getMessage().getContentRaw();
+                isInitialize = true;
+                event.getChannel().sendMessage(languagesAdapter.getFirstInit(5)
+                        +InitUser.getName()+languagesAdapter.getFirstInit(6)
+                        +event.getGuild().getRoleById(memberRoleID).getName()+languagesAdapter.getFirstInit(7)
+                        +event.getGuild().getRoleById(banRoleID).getName()+languagesAdapter.getFirstInit(13)
+                        +event.getGuild().getTextChannelById(messageChannelID).getName()+languagesAdapter.getFirstInit(8)).queue();
+            }
+            catch (Exception ex){
+
+            }
+         }
     }
 }

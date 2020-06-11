@@ -14,11 +14,11 @@ public class MuteMain {
     private static Role Banrole;
     private texts text=new texts();
     Date current;
-    //TODO:if mute f will stopped write in the main channel info about muted members(если админы выключат функцию мута то вывести список замученых в главный канал)
+    //TODO:if mute f will stopped, write in the main channel info about muted members(если админы выключат функцию мута то вывести список замученых в главный канал)
     //TODO:finish Check(){}.Make normal filters and test(доделать функцию и затестить)
     public void Check(MessageReceivedEvent message){
         Banrole=message.getGuild().getRoleById("717311700805877777");
-        String word=message.getMessage().getContentRaw().replaceAll(" ","");
+        String word=message.getMessage().getContentRaw().replaceAll(" ","").toLowerCase();
         System.out.println(word);
         for (int i = 0; i < text.mat.length ; i++) {
             if(word.contains(text.mat[i])){
